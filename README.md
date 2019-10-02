@@ -1,6 +1,12 @@
 # hello-demo
 
-1.¿ìÅÅµÄÈıÖÖÊµÏÖ
-	*Ç°ºóÖ¸Õë·¨
-	*×óÓÒÖ¸Õë·¨
-	*ÍÚ¿Ó·¨
+1.å¿«æ’çš„ä¸‰ç§å®ç°
+	*å‰åæŒ‡é’ˆæ³•
+	*å·¦å³æŒ‡é’ˆæ³•
+	*æŒ–å‘æ³•
+2.åè½¬é“¾è¡¨
+	*éé€’å½’
+	*é€’å½’
+	---* What is the reverse of null (the empty list)? null.
+    	---* What is the reverse of a one element list? the element.
+     	---* What is the reverse of an n element list? the reverse of the rest of the list followed by the first element.
