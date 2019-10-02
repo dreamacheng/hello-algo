@@ -2,3 +2,6 @@ target/
 /bin
 .project
 .classpath
+/out
+.idea
+.iml

@@ -1,4 +1,4 @@
-package test.algo;
+package exm.algo.sort;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -13,17 +13,17 @@ public class QuickSort {
 			while(i < arr.length) {
 				arr[i++] = random.nextInt(100);
 			}
-			System.out.println("ÅÅĞòÇ°Êı×éÎª£º " + Arrays.toString(arr));
+			System.out.println("æ’åºå‰æ•°ç»„ä¸ºï¼š " + Arrays.toString(arr));
 			quickSort(arr, 0, arr.length -1);
-			System.out.println("ÅÅĞòºóÊı×éÎª£º " + Arrays.toString(arr));
+			System.out.println("æ’åºåæ•°ç»„ä¸ºï¼š " + Arrays.toString(arr));
 			for(int j = 0; j < arr.length - 1; j++) {
 				if(arr[j] > arr[j+1]) {
 					isCorrect = false;
 				}
 			}
-			System.out.println("ÅÅĞò" + (isCorrect ? "ÕıÈ·" : "´íÎó"));
+			System.out.println("æ’åº" + (isCorrect ? "æ­£ç¡®" : "é”™è¯¯"));
 		}
-		System.out.println("1000×éÊı¾İÅÅĞò" + (isCorrect ? "ÕıÈ·" : "´íÎó"));
+		System.out.println("1000ç»„æ•°æ®æ’åº" + (isCorrect ? "æ­£ç¡®" : "é”™è¯¯"));
 	}
 
 	private static void quickSort(int[] arr, int i, int j) {
@@ -34,17 +34,17 @@ public class QuickSort {
 		quickSort(arr, i, pivot -1);
 		quickSort(arr, pivot + 1, j);
 	}
-	
+
 	/**
-	 * 	Ç°ºóÖ¸ÕëÊµÏÖ
+	 * 	å‰åæŒ‡é’ˆå®ç°
 	 * @param arr
-	 * @param i Êı×éÆğÊ¼ÏÂ±ê
-	 * @param j Êı×é½áÊøÏÂ±ê
+	 * @param i æ•°ç»„èµ·å§‹ä¸‹æ ‡
+	 * @param j æ•°ç»„ç»“æŸä¸‹æ ‡
 	 * @return
 	 */
 	@SuppressWarnings("unused")
 	private static int partition1(int[] arr, int begin, int end) {
-		
+
 		int pivot = arr[end];
 		int i = begin;
 		for(int j = begin; j < end; ++j) {
@@ -61,11 +61,11 @@ public class QuickSort {
 		int temp = arr[i];
 		arr[i] = pivot;
 		arr[end] = temp;
-		
+
 		return i;
 	}
 	/**
-	 *	×óÓÒÖ¸ÕëÊµÏÖ
+	 *	å·¦å³æŒ‡é’ˆå®ç°
 	 * @param arr
 	 * @param begin
 	 * @param end
@@ -93,9 +93,9 @@ public class QuickSort {
 		arr[i] = pivot;
 		return i;
 	}
-	
+
 	/**
-	 * 	ÍÚ¿Ó·¨ÊµÏÖ
+	 * 	æŒ–å‘æ³•å®ç°
 	 * @param arr
 	 * @param begin
 	 * @param end
