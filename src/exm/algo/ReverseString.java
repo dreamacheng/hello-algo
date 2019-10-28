@@ -1,5 +1,8 @@
-package exm.algo.sort;
+package exm.algo;
 
+/**
+ * 反转句子中单词顺序（不借助库函数）
+ */
 public class ReverseString {
 
     public static void main(String[] args) {

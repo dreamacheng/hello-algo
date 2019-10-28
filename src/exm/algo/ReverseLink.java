@@ -1,12 +1,15 @@
-package exm.algo.sort;
+package exm.algo;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Stack;
 
+/**
+ * 反转单向链表
+ * 三种常见实现
+ */
 public class ReverseLink {
-
 
     /**
      * 顺序反转
@@ -47,8 +50,8 @@ public class ReverseLink {
         while (!stack.empty()){
             head.next = stack.pop();
             head = head.next;
-            head.next = null;
         }
+        head.next = null;
         return newHead;
     }
 
@@ -72,7 +75,6 @@ public class ReverseLink {
         secondNode.next = head;
         return node;
     }
-
 }
 
 class Node{

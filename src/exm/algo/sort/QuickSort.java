@@ -3,28 +3,11 @@ package exm.algo.sort;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * 快速排序
+ */
 public class QuickSort {
-	public static void main(String[] args) {
-		boolean isCorrect = true;
-		for(int m = 0; m < 1000; ++m) {
-			int[] arr = new int[10];
-			Random random = new Random();
-			int i = 0;
-			while(i < arr.length) {
-				arr[i++] = random.nextInt(100);
-			}
-			System.out.println("排序前数组为： " + Arrays.toString(arr));
-			quickSort(arr, 0, arr.length -1);
-			System.out.println("排序后数组为： " + Arrays.toString(arr));
-			for(int j = 0; j < arr.length - 1; j++) {
-				if(arr[j] > arr[j+1]) {
-					isCorrect = false;
-				}
-			}
-			System.out.println("排序" + (isCorrect ? "正确" : "错误"));
-		}
-		System.out.println("1000组数据排序" + (isCorrect ? "正确" : "错误"));
-	}
+
 
 	private static void quickSort(int[] arr, int i, int j) {
 		if(i >= j) {
