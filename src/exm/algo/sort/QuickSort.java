@@ -21,8 +21,8 @@ public class QuickSort {
 	/**
 	 * 	前后指针实现
 	 * @param arr
-	 * @param i 数组起始下标
-	 * @param j 数组结束下标
+	 * @param begin 数组起始下标
+	 * @param end 数组结束下标
 	 * @return
 	 */
 	@SuppressWarnings("unused")
