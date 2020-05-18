@@ -9,7 +9,7 @@ import java.util.Random;
 public class QuickSort {
 
 
-	private static void quickSort(int[] arr, int i, int j) {
+	public static void quickSort(int[] arr, int i, int j) {
 		if(i >= j) {
 			return;
 		}
@@ -30,21 +30,19 @@ public class QuickSort {
 
 		int pivot = arr[end];
 		int i = begin;
-		for(int j = begin; j < end; ++j) {
-			if(arr[j] < pivot) {
-				if(i == j) {
+		for (int j = begin; j < end; ++j) {
+			if (arr[j] < pivot) {
+				if (i == j) {
 					i++;
-				}else {
-					arr[i++] = arr[j];
+				} else {
 					int temp = arr[i];
+					arr[i++] = arr[j];
 					arr[j] = temp;
 				}
 			}
 		}
-		int temp = arr[i];
+		arr[end] = arr[i];
 		arr[i] = pivot;
-		arr[end] = temp;
-
 		return i;
 	}
 	/**
