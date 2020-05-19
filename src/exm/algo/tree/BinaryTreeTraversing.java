@@ -1,46 +1,11 @@
 package exm.algo.tree;
 
-
-import sun.reflect.generics.tree.Tree;
-
-import java.sql.SQLOutput;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * 二叉树遍历
  */
 public class BinaryTreeTraversing {
-
-    public static void main(String[] args) {
-        TreeNode test = new TreeNode("A");
-        TreeNode testl = new TreeNode("B");
-        TreeNode testr = new TreeNode("C");
-        TreeNode testll = new TreeNode("D");
-        TreeNode testrr = new TreeNode("E");
-        TreeNode testlr = new TreeNode("F");
-        TreeNode testrl = new TreeNode("G");
-        test.lChild = testl;
-        testl.lChild = testll;
-        testl.rChild = testlr;
-        test.rChild = testr;
-        testr.rChild = testrr;
-        testr.lChild = testrl;
-        preorderTraversing1(test);
-        System.out.println();
-        preorderTraversing2(test);
-        System.out.println();
-        inorderTraversing1(test);
-        System.out.println();
-        inorderTraversing2(test);
-        System.out.println();
-        postorderTraversing1(test);
-        System.out.println();
-        postorderTraversing2(test);
-        System.out.println();
-        layerTraversing(test);
-    }
 
     /**
      * 递归前序遍历
@@ -60,16 +25,17 @@ public class BinaryTreeTraversing {
      * 借助栈来实现 根 -> 左子节点 -> 右子节点 的遍历
      * @param root 根节点
      */
-    public static void preorderTraversing2 (TreeNode root) {
+    public static List<Integer> preorderTraversing2 (TreeNode root) {
         if(root == null) {
-            return;
+            return Collections.emptyList();
         }
+        LinkedList<Integer> result = new LinkedList<>();
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         TreeNode spec = null;
         while (!stack.isEmpty()) {
             spec = stack.pop();
-            System.out.print(spec.val + " ");
+            result.add(spec.val);
             if(spec.rChild != null) {
                 stack.push(spec.rChild);
             }
@@ -77,6 +43,7 @@ public class BinaryTreeTraversing {
                 stack.push(spec.lChild);
             }
         }
+        return result;
     }
 
     /**
@@ -100,10 +67,11 @@ public class BinaryTreeTraversing {
      * 3.当栈与当前节点都为空时，遍历完成
      * @param root
      */
-    public static void inorderTraversing2 (TreeNode root) {
+    public static List<Integer> inorderTraversing2 (TreeNode root) {
         if(root == null) {
-            return;
+            return Collections.emptyList();
         }
+        LinkedList<Integer> result = new LinkedList<>();
         Stack<TreeNode> stack = new Stack<>();
         TreeNode spec = root;
         while (!stack.isEmpty() || spec != null) {
@@ -112,9 +80,10 @@ public class BinaryTreeTraversing {
                 spec = spec.lChild;
             }
             spec = stack.pop();
-            System.out.print(spec.val + " ");
+            result.add(spec.val);
             spec = spec.rChild;
         }
+        return result;
     }
 
     /**
@@ -135,14 +104,17 @@ public class BinaryTreeTraversing {
      * 借助两个栈实现，首先将当前节点放入栈一，pop后将左右子节点继续放入栈一，并将当前节点放如栈二
      * 循环以上过程直到栈一为空，此时栈二节点的出栈顺序即为树的后序遍历
      * （当前节点的左右子树入栈一时，是左节点先入，以保证在入栈二时是后入）
+     *
+     *  先序： 根 -> 左 -> 右    变形： 根 -> 右 -> 左 逆序遍历  —> 后序
      * @param root
      */
-    public static void postorderTraversing2 (TreeNode root) {
+    public static List<Integer> postorderTraversing2 (TreeNode root) {
         if (root == null) {
-            return;
+            return Collections.emptyList();
         }
+        LinkedList<Integer> result = new LinkedList<>();
         Stack<TreeNode> stack1 = new Stack<>();
-        Stack<TreeNode> stack2 = new Stack<>();
+//        Stack<TreeNode> stack2 = new Stack<>();
         TreeNode spec= root;
         stack1.push(spec);
         while (!stack1.isEmpty()) {
@@ -153,11 +125,13 @@ public class BinaryTreeTraversing {
             if (spec.rChild != null) {
                 stack1.push(spec.rChild);
             }
-            stack2.push(spec);
+//            stack2.push(spec);
+            result.addFirst(spec.val);
         }
-        while (!stack2.isEmpty()) {
-            System.out.print(stack2.pop().val + " ");
-        }
+//        while (!stack2.isEmpty()) {
+//            System.out.print(stack2.pop().val + " ");
+//        }
+        return result;
     }
 
     /**
@@ -184,13 +158,45 @@ public class BinaryTreeTraversing {
             System.out.print(cur.val + " ");
         }
     }
+
+    /**
+     * 层遍历二叉树
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new LinkedList<>();
+        if (root == null) {
+            return result;
+        }
+        LinkedList<TreeNode> nodes = new LinkedList<>();
+        nodes.offer(root);
+        while(!nodes.isEmpty()) {
+            List<Integer> res = new LinkedList<>();
+            // size即为当前遍历层的节点数
+            int size = nodes.size();
+            // 遍历当层节点，按照从左至右的顺序将当前层的子节点放入LinkedList,
+            for (int i = 0; i < size; i++) {
+                TreeNode curr = nodes.poll();
+                res.add(curr.val);
+                if (curr.lChild != null) {
+                    nodes.add(curr.lChild);
+                }
+                if (curr.rChild != null) {
+                    nodes.add(curr.rChild);
+                }
+            }
+            result.add(res);
+        }
+        return result;
+    }
 }
 
 class TreeNode {
     TreeNode lChild;
     TreeNode rChild;
-    String val;
-    TreeNode(String val) {
+    Integer val;
+    TreeNode(Integer val) {
         this.val = val;
     }
 }
