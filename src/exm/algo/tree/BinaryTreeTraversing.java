@@ -16,8 +16,8 @@ public class BinaryTreeTraversing {
             return;
         }
         System.out.print(root.val + " ");
-        preorderTraversing1(root.lChild);
-        preorderTraversing1(root.rChild);
+        preorderTraversing1(root.left);
+        preorderTraversing1(root.right);
     }
 
     /**
@@ -36,11 +36,11 @@ public class BinaryTreeTraversing {
         while (!stack.isEmpty()) {
             spec = stack.pop();
             result.add(spec.val);
-            if(spec.rChild != null) {
-                stack.push(spec.rChild);
+            if(spec.right != null) {
+                stack.push(spec.right);
             }
-            if(spec.lChild != null) {
-                stack.push(spec.lChild);
+            if(spec.left != null) {
+                stack.push(spec.left);
             }
         }
         return result;
@@ -54,9 +54,9 @@ public class BinaryTreeTraversing {
         if (root == null) {
             return;
         }
-        inorderTraversing1(root.lChild);
+        inorderTraversing1(root.left);
         System.out.print(root.val + " ");
-        inorderTraversing1(root.rChild);
+        inorderTraversing1(root.right);
     }
 
     /**
@@ -77,11 +77,11 @@ public class BinaryTreeTraversing {
         while (!stack.isEmpty() || spec != null) {
             while (spec != null) {
                 stack.push(spec);
-                spec = spec.lChild;
+                spec = spec.left;
             }
             spec = stack.pop();
             result.add(spec.val);
-            spec = spec.rChild;
+            spec = spec.right;
         }
         return result;
     }
@@ -94,8 +94,8 @@ public class BinaryTreeTraversing {
         if (root == null) {
             return;
         }
-        postorderTraversing1(root.lChild);
-        postorderTraversing1(root.rChild);
+        postorderTraversing1(root.left);
+        postorderTraversing1(root.right);
         System.out.print(root.val + " ");
     }
 
@@ -119,11 +119,11 @@ public class BinaryTreeTraversing {
         stack1.push(spec);
         while (!stack1.isEmpty()) {
             spec = stack1.pop();
-            if (spec.lChild != null) {
-                stack1.push(spec.lChild);
+            if (spec.left != null) {
+                stack1.push(spec.left);
             }
-            if (spec.rChild != null) {
-                stack1.push(spec.rChild);
+            if (spec.right != null) {
+                stack1.push(spec.right);
             }
 //            stack2.push(spec);
             result.addFirst(spec.val);
@@ -149,11 +149,11 @@ public class BinaryTreeTraversing {
         queue.offer(root);
         while (!queue.isEmpty()) {
             cur = queue.poll();
-            if (cur.lChild != null) {
-                queue.offer(cur.lChild);
+            if (cur.left != null) {
+                queue.offer(cur.left);
             }
-            if (cur.rChild != null) {
-                queue.offer(cur.rChild);
+            if (cur.right != null) {
+                queue.offer(cur.right);
             }
             System.out.print(cur.val + " ");
         }
@@ -179,24 +179,15 @@ public class BinaryTreeTraversing {
             for (int i = 0; i < size; i++) {
                 TreeNode curr = nodes.poll();
                 res.add(curr.val);
-                if (curr.lChild != null) {
-                    nodes.add(curr.lChild);
+                if (curr.left != null) {
+                    nodes.add(curr.left);
                 }
-                if (curr.rChild != null) {
-                    nodes.add(curr.rChild);
+                if (curr.right != null) {
+                    nodes.add(curr.right);
                 }
             }
             result.add(res);
         }
         return result;
-    }
-}
-
-class TreeNode {
-    TreeNode lChild;
-    TreeNode rChild;
-    Integer val;
-    TreeNode(Integer val) {
-        this.val = val;
     }
 }
