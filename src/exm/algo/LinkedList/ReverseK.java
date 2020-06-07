@@ -52,4 +52,46 @@ public class ReverseK {
         return dummy.next;
     }
 
+    public static ListNode reverseKGroup2(ListNode head, int k) {
+        if (head == null || k < 1) {
+            return null;
+        }
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode pre = dummy;
+        ListNode end = dummy;
+        ListNode next;
+        while (end != null) {
+            for (int i = 0; i < k && end != null; i++) {
+                end = end.next;
+            }
+            if (end == null) {
+                break;
+            }
+            next = end.next;
+            end.next = null;
+            ListNode start = pre.next;
+            pre.next = reverse(start);
+            pre = start;
+            start.next = next;
+            end = pre;
+        }
+        return dummy.next;
+    }
+
+    public static ListNode reverse(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        ListNode curr = head;
+        ListNode prev = null,temp;
+        while (curr != null) {
+            temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
+        }
+        return prev;
+    }
+
 }
