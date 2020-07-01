@@ -70,5 +70,37 @@ public class MaxLengthSubarray {
         return res;
     }
 
+    // 滑动窗口
+    public int findLength3(int[] A, int[] B) {
+        if (A == null || B == null) return 0;
+        int aLen = A.length, bLen = B.length;
+        int res = 0, len, maxLen;
+        for (int i = 0; i < aLen; i++) {
+            len = Math.min(aLen - i, bLen);
+            maxLen = maxLength(A, B, i, 0, len);
+            res = Math.max(res, maxLen);
+        }
+
+        for (int j = 0; j < bLen; j++) {
+            len = Math.min(aLen, bLen - j);
+            maxLen = maxLength(A, B, 0, j, len);
+            res = Math.max(res, maxLen);
+        }
+        return res;
+    }
+
+    private int maxLength(int[] a, int[] b, int aStart, int bStart, int len) {
+        int ret = 0, k = 0;
+        for (int i = 0; i < len; i++) {
+            if (a[aStart + i] == b[bStart + i]) {
+                k++;
+            } else {
+                k = 0;
+            }
+            ret = Math.max(ret, k);
+        }
+        return ret;
+    }
+
 
 }
