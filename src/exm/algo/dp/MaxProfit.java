@@ -1,5 +1,7 @@
 package exm.algo.dp;
 
+import java.util.LinkedList;
+
 public class MaxProfit {
 
     /**
@@ -34,7 +36,7 @@ public class MaxProfit {
         return dp[prices.length];
     }
 
-    // 空间优化
+    // dp空间优化
     public int maxProfit2(int[] prices) {
         if (prices == null || prices.length == 0) return 0;
         int prev = 0; // previous
@@ -46,5 +48,20 @@ public class MaxProfit {
             prev = curr;
         }
         return prev;
+    }
+
+    // 单调栈
+    public int maxProfit3(int[] prices) {
+        if (prices == null || prices.length == 0) return 0;
+        int curr = prices[0];
+        int max = 0;
+        for (int price : prices) {
+            if (curr > price) {
+                curr = price;
+            } else {
+                max = (price - curr) > max ? (price - curr) : max;
+            }
+        }
+        return max;
     }
 }
