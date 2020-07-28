@@ -23,21 +23,22 @@ public class MergeSection {
      */
     public int[][] merge(int[][] intervals) { // 排序 + 双指针
 
+        if (intervals == null || intervals.length == 0) return new int[][]{};
         Arrays.sort(intervals, Comparator.comparingInt(arr -> arr[0]));
 
-        List<int[]> rest = new LinkedList<>();
-        int left = 0;
-        for (int right = 1; right < intervals.length; right++) {
-            if (intervals[left][1] < intervals[right][0]) continue;
-            int end = Math.max(intervals[left][1], intervals[right-1][1]);
-            rest.add(new int[]{intervals[left][0], end});
-            left = right;
+        int[][] rest = new int[intervals.length][2];
+        int left = 0, k = 0;
+        int max = intervals[left][1];
+        for (int right = 1; right <= intervals.length; right++) {
+            if (right < intervals.length && max >= intervals[right][0]) {
+                max = Math.max(max, intervals[right][1]);
+            } else {
+                rest[k++] = (new int[]{intervals[left][0], max});
+                left = right;
+                max = intervals[left == intervals.length ? left -1 : left][1];
+            }
         }
-        int[][] res = new int[rest.size()][2];
-        for (int i = 0; i < res.length; i++) {
-            res[i] = rest.get(i);
-        }
-        return res;
+        return Arrays.copyOf(rest, k);
     }
 
 }
