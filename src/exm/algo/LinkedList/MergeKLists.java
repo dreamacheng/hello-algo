@@ -62,7 +62,4 @@ public class MergeKLists {
         return dummy.next;
     }
 
-    public static ListNode mergeKLists2(ListNode[] lists) {
-
-    }
 }

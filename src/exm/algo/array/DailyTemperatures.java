@@ -1,7 +1,7 @@
 package exm.algo.array;
 
 import java.util.Arrays;
-import java.util.Stack;
+import java.util.LinkedList;
 
 public class DailyTemperatures {
 
@@ -29,7 +29,7 @@ public class DailyTemperatures {
         int len = T.length;
         int[] res = new int[len];
         // 使用单调栈，栈空或温度递减时直接入栈
-        Stack<Integer> stack = new Stack<>();
+        LinkedList<Integer> stack = new LinkedList<>();
         for (int i = 0; i < len; i++) {
             while (!stack.isEmpty() && T[i] > T[stack.peek()]) {
                 res[stack.peek()] = i - stack.pop();

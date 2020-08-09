@@ -57,6 +57,7 @@ public class RestoreIpAddresses {
         if (s.charAt(segStart) == '0') {
             dfs_seg[segId] = 0;
             dfs(s, segId + 1, segStart + 1);
+            return;
         }
 
         // 一般情况，枚举每一种可能性并递归

@@ -1,6 +1,7 @@
 package exm.algo.interview;
 
-import java.util.Stack;
+
+import java.util.LinkedList;
 
 /**
  * 两个栈实现一个队列
@@ -10,12 +11,12 @@ import java.util.Stack;
  */
 public class CQueue {
 
-    Stack<Integer> s1;
-    Stack<Integer> s2;
+    LinkedList<Integer> s1;
+    LinkedList<Integer> s2;
 
     public CQueue() {
-        s1 = new Stack();
-        s2 = new Stack();
+        s1 = new LinkedList();
+        s2 = new LinkedList();
     }
 
     public void appendTail(int value) {

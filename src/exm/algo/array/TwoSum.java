@@ -1,8 +1,8 @@
 package exm.algo.array;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
-import java.util.Stack;
 
 public class TwoSum {
 
@@ -101,8 +101,8 @@ public class TwoSum {
         if (l2 == null) {
             return l1;
         }
-        Stack<Integer> s1 = new Stack<>();
-        Stack<Integer> s2 = new Stack<>();
+        LinkedList<Integer> s1 = new LinkedList<>();
+        LinkedList<Integer> s2 = new LinkedList<>();
         while (l1 != null) {
             s1.push(l1.val);
             l1 = l1.next;
@@ -113,7 +113,7 @@ public class TwoSum {
         }
         int flag = 0;
         ListNode head = null;
-        while (!s1.empty() || !s2.empty() || flag != 0) {
+        while (!s1.isEmpty() || !s2.isEmpty() || flag != 0) {
 //            int temp1 = 0;
 //            int temp2 = 0;
 //            if (!s1.empty()) {
@@ -129,8 +129,8 @@ public class TwoSum {
 //            flag = (temp1 + temp2 + flag) / 10;
             // 代码优化
             int sum = flag;
-            sum += s1.empty() ? 0 : s1.pop();
-            sum += s2.empty() ? 0 : s2.pop();
+            sum += s1.isEmpty() ? 0 : s1.pop();
+            sum += s2.isEmpty() ? 0 : s2.pop();
             ListNode node = new ListNode(sum % 10);
             node.next = head;
             head = node;

@@ -1,4 +1,4 @@
-package exm.algo;
+package exm.algo.LinkedList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class ReverseLink {
             return head;
         }
         Node pre = null;
-        Node next = null;
+        Node next;
         while (head != null){
             next = head.next;
             head.next = pre;

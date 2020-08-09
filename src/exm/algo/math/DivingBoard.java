@@ -1,4 +1,4 @@
-package exm.algo.dp;
+package exm.algo.math;
 
 import java.util.ArrayList;
 import java.util.Arrays;

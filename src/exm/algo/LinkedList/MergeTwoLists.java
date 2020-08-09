@@ -27,12 +27,7 @@ public class MergeTwoLists {
             }
             curr = curr.next;
         }
-        if (l1 == null) {
-            curr.next = l2;
-        }
-        if (l2 == null) {
-            curr.next = l1;
-        }
+        curr.next = l1 == null ? l2 : l1;
         return dummy.next;
     }
 
