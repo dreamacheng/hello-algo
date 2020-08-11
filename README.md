@@ -120,28 +120,6 @@
 
   * 排序 + 双指针
 
-### * Stack、Queue、Heap
-
- * 每日温度（https://leetcode-cn.com/problems/daily-temperatures）
-
-   ```
-   请根据每日 气温 列表，重新生成一个列表。对应位置的输出为：要想观测到更高的气温，至少需要等待的天数。如果气温在这之后都不会升高，请在该位置用 0 来代替。
-   例如，给定一个列表 temperatures = [73, 74, 75, 71, 69, 72, 76, 73]，
-   你的输出应该是 [1, 1, 4, 2, 1, 1, 0, 0]。
-   提示：气温 列表长度的范围是 [1, 30000]。每个气温的值的均为华氏度，都是在 [30, 100] 范围内的整数。
-   ```
-
-   * 单调栈
-
-* 滑动窗口的最大值(https://leetcode-cn.com/problems/hua-dong-chuang-kou-de-zui-da-zhi-lcof/)
-
-  ```
-  给定一个数组 nums 和滑动窗口的大小 k，请找出所有滑动窗口里的最大值。
-  ```
-
-  * 单调队列
-
-
 ### * LinkedList
 
 * 两数相加(https://leetcode-cn.com/problems/add-two-numbers/)
@@ -237,6 +215,66 @@
 
   * 一次遍历获取长度，顺序遍历翻转
   * 记录四个关键节点，当前翻转片段的头节点，尾节点，头节点的前驱，尾节点的后继，顺序翻转
+
+### * Stack、Queue、Heap
+
+ * 每日温度（https://leetcode-cn.com/problems/daily-temperatures）
+
+   ```
+   请根据每日 气温 列表，重新生成一个列表。对应位置的输出为：要想观测到更高的气温，至少需要等待的天数。如果气温在这之后都不会升高，请在该位置用 0 来代替。
+   例如，给定一个列表 temperatures = [73, 74, 75, 71, 69, 72, 76, 73]，
+   你的输出应该是 [1, 1, 4, 2, 1, 1, 0, 0]。
+   提示：气温 列表长度的范围是 [1, 30000]。每个气温的值的均为华氏度，都是在 [30, 100] 范围内的整数。
+   ```
+
+   * 单调栈
+
+* 滑动窗口的最大值(https://leetcode-cn.com/problems/hua-dong-chuang-kou-de-zui-da-zhi-lcof/)
+
+  ```
+  给定一个数组 nums 和滑动窗口的大小 k，请找出所有滑动窗口里的最大值。
+  ```
+
+  * 单调队列
+
+
+### * Tree
+
+ * 不同的二叉搜索树Ⅱ(https://leetcode-cn.com/problems/unique-binary-search-trees-ii/)
+
+   ```
+   给定一个整数 n，生成所有由 1 ... n 为节点所组成的 二叉搜索树 。
+   ```
+
+   * 递归 =》枚举根节点，递归得到可行左右子树集合，对每次枚举的根节点求可行左右子树的笛卡尔积
+
+* 二叉树的镜像(https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof/)
+
+  ```
+  请完成一个函数，输入一个二叉树，该函数输出它的镜像。
+  ```
+
+  * 递归
+
+* 将有序数组转换为二叉搜索树(https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree)
+
+  ```
+  请完成一个函数，输入一个二叉树，该函数输出它的镜像。
+  ```
+
+  * 归并递归构建
+
+* 验证二叉搜索树(https://leetcode-cn.com/problems/validate-binary-search-tree/)
+
+  ```
+  给定一个二叉树，判断其是否是一个有效的二叉搜索树。
+  假设一个二叉搜索树具有如下特征：
+  节点的左子树只包含小于当前节点的数。节点的右子树只包含大于当前节点的数。
+  所有左子树和右子树自身必须也是二叉搜索树。
+  ```
+
+  * 递归 =》 每次递归更新子树的最大最小值
+  * 利用 BST 的中序遍历为升序的特点
 
 ### * DP
 
