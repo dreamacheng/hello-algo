@@ -60,20 +60,21 @@ public class DeleteDuplicates {
         dummy.next = head;
         ListNode pre = dummy;
         ListNode curr = head, next = head;
-        while (curr != null) {
-            if (next.next != null) {
-                if (curr.val == next.next.val) {
-                    next = next.next;
-                } else {
-                    curr.next = next.next;
-                    curr = curr.next;
-                    next = curr;
-                }
+        while (curr != null && next.next != null) {
+            if (curr.val == next.next.val) {
+                next = next.next;
             } else {
-                curr.next = null;
-                curr = null;
+                // 这里的if-else处理pre指针指向不重复的元素，若在遍历过程中指向重复，后续遍历到不重复的节点对重复的节点进行覆盖
+                if (curr == next) {
+                    pre = pre.next;
+                } else {
+                    pre.next = next.next;
+                }
+                curr = next.next;
+                next = curr;
             }
         }
+        pre.next = curr == next ? curr : null;
         return dummy.next;
     }
 }
