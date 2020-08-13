@@ -21,20 +21,16 @@ public class DeleteDuplicates {
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode curr = head, next = head;
-        while (curr != null) {
-            if (next.next != null) {
-                if (curr.val == next.next.val) {
-                    next = next.next;
-                } else {
-                    curr.next = next.next;
-                    curr = curr.next;
-                    next = curr;
-                }
+        while (curr != null && next.next != null) {
+            if (curr.val == next.next.val) {
+                next = next.next;
             } else {
-                curr.next = null;
-                curr = null;
+                curr.next = next.next;
+                curr = curr.next;
+                next = curr;
             }
         }
+        curr.next = null;
         return dummy.next;
     }
 
