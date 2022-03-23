@@ -13,7 +13,7 @@ public class QuickSort {
 		if(i >= j) {
 			return;
 		}
-		int pivot = partition3(arr, i, j);
+		int pivot = partition1(arr, i, j);
 		quickSort(arr, i, pivot -1);
 		quickSort(arr, pivot + 1, j);
 	}
@@ -88,11 +88,11 @@ public class QuickSort {
 		int i = begin;
 		int j = end;
 		while(i < j) {
-			if(arr[i] <= pivot && i < j) {
+			if (arr[i] <= pivot) {
 				i++;
 			}
 			arr[j] = arr[i];
-			if(arr[j] >= pivot && i < j) {
+			if (arr[j] >= pivot && i < j) {
 				j--;
 			}
 			arr[i] = arr[j];

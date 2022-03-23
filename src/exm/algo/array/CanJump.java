@@ -1,7 +1,5 @@
 package exm.algo.array;
 
-import java.util.Arrays;
-
 public class CanJump {
 
     /**
@@ -32,7 +30,7 @@ public class CanJump {
         if (nums.length == 1) return true;
         int max = -1;
         for (int i = 0; i < nums.length; i++, max--) {
-            max = nums[i] > max ? nums[i] : max;
+            max = Math.max(nums[i], max);
             if (max <= 0) return false;
             if (max >= nums.length - i - 1) return true;
         }
