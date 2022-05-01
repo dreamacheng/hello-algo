@@ -11,8 +11,6 @@ public class MaxSubArray {
      * 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
      * 来源：力扣（LeetCode）
      * 链接：https://leetcode-cn.com/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof
-     * @param nums
-     * @return
      */
     public int maxSubArray(int[] nums) {
         // 子问题：
@@ -47,5 +45,15 @@ public class MaxSubArray {
             res = Math.max(res, nums[i]);
         }
         return res;
+    }
+
+    public int maxSubArray3(int[] nums) {
+        int prev = 0;
+        int rest = nums[0];
+        for (int num : nums) {
+            prev = Math.max(prev + num, num);
+            rest = Math.max(rest, prev);
+        }
+        return rest;
     }
 }
