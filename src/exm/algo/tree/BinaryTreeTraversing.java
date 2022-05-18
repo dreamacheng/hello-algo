@@ -134,6 +134,28 @@ public class BinaryTreeTraversing {
         return result;
     }
 
+    public static List<Integer> postOrder(TreeNode root) {
+        List<Integer> rest = new ArrayList<>();
+        Deque<TreeNode> stack = new LinkedList<>();
+        TreeNode prev = null;
+        while (!stack.isEmpty() || root != null) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            if (root.right == null || prev == root.right) {
+                rest.add(root.val);
+                prev = root;
+                root = null;
+            } else {
+                stack.push(root);
+                root = root.right;
+            }
+        }
+        return rest;
+    }
+
     /**
      * 按层遍历二叉树
      * 借助一个队列，不断将每层节点放入队列，放入下一层节点时打印当前层
